@@ -1,0 +1,8 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(Get-Content \"C:\\\\Users\\\\SFT_BO~1\\\\AppData\\\\Local\\\\Temp\\\\claude\\\\C--Users-SFT-BOL-03-Desktop-JsonCorp-JsonCorpFRONT-jsoncorp-front\\\\c7983a43-0b93-4f6d-bddd-1a8d5cef956a\\\\tasks\\\\bgr32m8i5.output\" -Tail 30)",
+      "Bash(npm run *)"
+    ]
+  }
+}
