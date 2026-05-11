@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useEffect } from "react";
+import Link from "next/link";
 
 const NAV_LINKS = [
   { href: "#soluciones", label: "Soluciones" },
@@ -52,12 +53,12 @@ export default function Navbar() {
             ))}
           </nav>
 
-          <a
-            href="#contacto"
+          <Link
+            href="/login"
             className="hidden md:inline-flex btn-primary text-base font-semibold px-7 py-3.5 rounded-full items-center gap-2"
           >
-            Solicitar Demo
-          </a>
+            Iniciar sesión
+          </Link>
 
           {/* Hamburger */}
           <button
@@ -89,13 +90,13 @@ export default function Navbar() {
                   {l.label}
                 </a>
               ))}
-              <a
-                href="#contacto"
+              <Link
+                href="/login"
                 onClick={() => setOpen(false)}
                 className="btn-primary text-base font-semibold px-5 py-3.5 rounded-lg mt-2 text-center"
               >
-                Solicitar Demo Gratis
-              </a>
+                Iniciar sesión
+              </Link>
             </nav>
           </div>
         )}

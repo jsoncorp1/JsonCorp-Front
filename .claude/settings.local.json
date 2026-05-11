@@ -2,7 +2,9 @@
   "permissions": {
     "allow": [
       "Bash(Get-Content \"C:\\\\Users\\\\SFT_BO~1\\\\AppData\\\\Local\\\\Temp\\\\claude\\\\C--Users-SFT-BOL-03-Desktop-JsonCorp-JsonCorpFRONT-jsoncorp-front\\\\c7983a43-0b93-4f6d-bddd-1a8d5cef956a\\\\tasks\\\\bgr32m8i5.output\" -Tail 30)",
-      "Bash(npm run *)"
+      "Bash(npm run *)",
+      "PowerShell(Get-ChildItem -Recurse -Path \"C:\\\\Users\\\\SFT_BOL_03\\\\Desktop\\\\JsonCorp\\\\JsonCorpFRONT\\\\jsoncorp-front\" -Exclude \"node_modules\", \".git\" | Where-Object { $_.FullName -notmatch \"node_modules|\\\\.git\" } | Select-Object FullName | Sort-Object FullName)",
+      "Bash(dir /b \"C:\\\\Users\\\\SFT_BOL_03\\\\Desktop\\\\JsonCorp\\\\JsonCorpFRONT\\\\jsoncorp-front\")"
     ]
   }
 }

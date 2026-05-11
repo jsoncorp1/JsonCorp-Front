@@ -69,7 +69,7 @@ export default function FinalCTA() {
             Hablar por WhatsApp
           </a>
           <a
-            href="mailto:hola@jsoncorp.com"
+            href="mailto:Jsoncorp1@gmail.com"
             className="btn-outline text-lg font-semibold px-10 py-5 rounded-full inline-flex items-center justify-center gap-2"
           >
             <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
