@@ -30,7 +30,7 @@ interface ServicesResponse {
   size: string
 }
 
-export default function SuperadminPage() {
+export default function AdminPage() {
   const router = useRouter()
   const [auth, setAuth] = useState<AuthData | null>(null)
   const [services, setServices] = useState<Service[]>([])
@@ -46,7 +46,7 @@ export default function SuperadminPage() {
 
   useEffect(() => {
     const a = getAuth()
-    if (!a || a.user.role !== "superadmin") {
+    if (!a || a.user.role !== "admin") {
       router.replace("/login")
       return
     }
@@ -55,9 +55,7 @@ export default function SuperadminPage() {
 
   useEffect(() => {
     if (!auth) return
-
     let cancelled = false
-
     async function load() {
       setLoading(true)
       setError("")
@@ -78,11 +76,8 @@ export default function SuperadminPage() {
         if (!cancelled) setLoading(false)
       }
     }
-
     load()
-    return () => {
-      cancelled = true
-    }
+    return () => { cancelled = true }
   }, [auth, page, refreshKey])
 
   function logout() {
@@ -129,37 +124,18 @@ export default function SuperadminPage() {
             <p className="text-slate-500 text-xs font-semibold uppercase tracking-wider px-3 mb-3">
               Gestión
             </p>
-            <span className="flex items-center gap-3 px-3 py-2.5 rounded-xl text-white bg-blue-600/20 border border-blue-500/20 text-sm font-medium cursor-default select-none mb-1">
+            <span className="flex items-center gap-3 px-3 py-2.5 rounded-xl text-white bg-blue-600/20 border border-blue-500/20 text-sm font-medium cursor-default select-none">
               <svg className="w-4 h-4 text-blue-400 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2" />
               </svg>
               Servicios
             </span>
-            <Link
-              href="/superadmin/roles"
-              className="flex items-center gap-3 px-3 py-2.5 rounded-xl text-slate-400 hover:text-white hover:bg-white/5 text-sm font-medium transition-colors mb-1"
-            >
-              <svg className="w-4 h-4 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0z" />
-              </svg>
-              Roles
-            </Link>
-            <Link
-              href="/superadmin/users"
-              className="flex items-center gap-3 px-3 py-2.5 rounded-xl text-slate-400 hover:text-white hover:bg-white/5 text-sm font-medium transition-colors"
-            >
-              <svg className="w-4 h-4 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
-              </svg>
-              Usuarios
-            </Link>
           </nav>
         </aside>
 
         {/* Main content */}
         <main className="flex-1 p-6 overflow-auto">
           <div className="max-w-6xl mx-auto">
-            {/* Page header */}
             <div className="flex items-center justify-between mb-6">
               <div>
                 <h1 className="text-white text-2xl font-bold">Servicios</h1>
@@ -221,7 +197,6 @@ export default function SuperadminPage() {
                               key={s.id}
                               className="border-b border-white/5 hover:bg-white/3 transition-colors"
                             >
-                              {/* Servicio */}
                               <td className="px-6 py-4">
                                 <div className="flex items-center gap-3">
                                   <div
@@ -237,12 +212,10 @@ export default function SuperadminPage() {
                                 </div>
                               </td>
 
-                              {/* Categoría */}
                               <td className="px-6 py-4 hidden lg:table-cell">
                                 <span className="text-slate-300 text-sm">{s.category}</span>
                               </td>
 
-                              {/* Precios */}
                               <td className="px-6 py-4 hidden xl:table-cell">
                                 <div className="flex flex-col gap-0.5">
                                   {s.priceList?.slice(0, 2).map((entry, i) => {
@@ -257,12 +230,10 @@ export default function SuperadminPage() {
                                 </div>
                               </td>
 
-                              {/* Creado por */}
                               <td className="px-6 py-4 hidden lg:table-cell">
                                 <span className="text-slate-400 text-sm">{s.createdBy}</span>
                               </td>
 
-                              {/* Acciones */}
                               <td className="px-6 py-4">
                                 <div className="flex items-center gap-1">
                                   <button
@@ -293,7 +264,6 @@ export default function SuperadminPage() {
                   </div>
                 </div>
 
-                {/* Pagination */}
                 {totalPages > 1 && (
                   <div className="flex items-center justify-between mt-4">
                     <p className="text-slate-400 text-sm">

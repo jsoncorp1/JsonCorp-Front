@@ -6,13 +6,14 @@ import { getAuthHeader } from "@/lib/auth"
 const API_BASE = process.env.NEXT_PUBLIC_API_BASE_URL
 
 interface Props {
-  serviceId: string
-  serviceName: string
+  itemId: string
+  itemName: string
+  endpoint: string
   onClose: () => void
   onDeleted: () => void
 }
 
-export default function ConfirmDeleteModal({ serviceId, serviceName, onClose, onDeleted }: Props) {
+export default function ConfirmDeleteModal({ itemId, itemName, endpoint, onClose, onDeleted }: Props) {
   const [loading, setLoading] = useState(false)
   const [error, setError] = useState("")
 
@@ -20,7 +21,7 @@ export default function ConfirmDeleteModal({ serviceId, serviceName, onClose, on
     setError("")
     setLoading(true)
     try {
-      const res = await fetch(`${API_BASE}/services/${serviceId}`, {
+      const res = await fetch(`${API_BASE}/${endpoint}/${itemId}`, {
         method: "DELETE",
         headers: getAuthHeader(),
       })
@@ -58,7 +59,7 @@ export default function ConfirmDeleteModal({ serviceId, serviceName, onClose, on
           <h2 className="text-white font-bold text-lg">Eliminar servicio</h2>
           <p className="text-slate-400 text-sm mt-1">
             ¿Estás seguro de que quieres eliminar{" "}
-            <span className="text-white font-semibold">{serviceName}</span>?
+            <span className="text-white font-semibold">{itemName}</span>?
             Esta acción no se puede deshacer.
           </p>
         </div>

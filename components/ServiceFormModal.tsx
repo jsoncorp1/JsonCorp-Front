@@ -314,15 +314,27 @@ export default function ServiceFormModal({ onClose, onSaved, serviceId }: Props)
 
               {/* Estadísticas clave */}
               <p className={SECTION}>Estadísticas clave</p>
-              {form.keyStatList.map((k, i) => (
-                <div key={i} className="flex gap-2 mb-2">
-                  <input className={INPUT} placeholder="Etiqueta" value={k.label} onChange={e => setKeyStat(i, "label", e.target.value)} />
-                  <input className={`${INPUT} w-28 shrink-0`} placeholder="Valor" value={k.value} onChange={e => setKeyStat(i, "value", e.target.value)} />
-                  {form.keyStatList.length > 1 && (
-                    <button type="button" onClick={() => removeKeyStat(i)} className="text-red-400 hover:text-red-300 px-2 shrink-0">✕</button>
-                  )}
-                </div>
-              ))}
+              <div className="flex flex-col gap-2 mb-2">
+                {form.keyStatList.map((k, i) => (
+                  <div key={i} className="bg-white/3 border border-white/8 rounded-xl p-3">
+                    <div className="grid grid-cols-2 gap-2">
+                      <div>
+                        <label className={LABEL}>Etiqueta</label>
+                        <input className={INPUT} placeholder="ej: Clientes activos" value={k.label} onChange={e => setKeyStat(i, "label", e.target.value)} />
+                      </div>
+                      <div>
+                        <label className={LABEL}>Valor</label>
+                        <div className="flex gap-1.5">
+                          <input className={INPUT} placeholder="ej: +500" value={k.value} onChange={e => setKeyStat(i, "value", e.target.value)} />
+                          {form.keyStatList.length > 1 && (
+                            <button type="button" onClick={() => removeKeyStat(i)} className="text-red-400 hover:text-red-300 px-2 shrink-0 text-sm">✕</button>
+                          )}
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                ))}
+              </div>
               <button type="button" onClick={addKeyStat} className="text-blue-400 hover:text-blue-300 text-xs font-medium transition-colors">+ Agregar estadística</button>
 
               {/* Beneficios */}
@@ -364,16 +376,31 @@ export default function ServiceFormModal({ onClose, onSaved, serviceId }: Props)
 
               {/* Precios */}
               <p className={SECTION}>Precios</p>
-              {form.priceList.map((p, i) => (
-                <div key={i} className="flex gap-2 mb-2">
-                  <input className={INPUT} placeholder="Plan" value={p.plan} onChange={e => setPrice(i, "plan", e.target.value)} />
-                  <input className={`${INPUT} w-36 shrink-0`} placeholder="Precio" value={p.price} onChange={e => setPrice(i, "price", e.target.value)} />
-                  <input className={INPUT} placeholder="Descripción" value={p.description} onChange={e => setPrice(i, "description", e.target.value)} />
-                  {form.priceList.length > 1 && (
-                    <button type="button" onClick={() => removePrice(i)} className="text-red-400 hover:text-red-300 px-2 shrink-0">✕</button>
-                  )}
-                </div>
-              ))}
+              <div className="flex flex-col gap-2 mb-2">
+                {form.priceList.map((p, i) => (
+                  <div key={i} className="bg-white/3 border border-white/8 rounded-xl p-3">
+                    <div className="grid grid-cols-2 gap-2 mb-2">
+                      <div>
+                        <label className={LABEL}>Plan</label>
+                        <input className={INPUT} placeholder="ej: Básico" value={p.plan} onChange={e => setPrice(i, "plan", e.target.value)} />
+                      </div>
+                      <div>
+                        <label className={LABEL}>Precio</label>
+                        <input className={INPUT} placeholder="ej: $299/mes" value={p.price} onChange={e => setPrice(i, "price", e.target.value)} />
+                      </div>
+                    </div>
+                    <div>
+                      <label className={LABEL}>Descripción <span className="text-slate-600 normal-case font-normal">(opcional)</span></label>
+                      <div className="flex gap-1.5">
+                        <input className={INPUT} placeholder="ej: Hasta 3 usuarios, soporte por email" value={p.description} onChange={e => setPrice(i, "description", e.target.value)} />
+                        {form.priceList.length > 1 && (
+                          <button type="button" onClick={() => removePrice(i)} className="text-red-400 hover:text-red-300 px-2 shrink-0 text-sm">✕</button>
+                        )}
+                      </div>
+                    </div>
+                  </div>
+                ))}
+              </div>
               <button type="button" onClick={addPrice} className="text-blue-400 hover:text-blue-300 text-xs font-medium transition-colors">+ Agregar precio</button>
 
               {/* Garantías */}

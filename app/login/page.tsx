@@ -37,6 +37,8 @@ export default function LoginPage() {
 
       if (data.user.role === "superadmin") {
         router.push("/superadmin")
+      } else if (data.user.role === "admin") {
+        router.push("/admin")
       } else {
         router.push("/")
       }

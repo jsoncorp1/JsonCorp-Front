@@ -6,6 +6,7 @@ import BenefitsSection from "@/components/BenefitsSection";
 import WhyUsSection from "@/components/WhyUsSection";
 import ResultsSection from "@/components/ResultsSection";
 import TestimonialsSection from "@/components/TestimonialsSection";
+import ServicesSection from "@/components/ServicesSection";
 import FinalCTA from "@/components/FinalCTA";
 import Footer from "@/components/Footer";
 
@@ -17,6 +18,7 @@ export default function Home() {
         <HeroSection />
         <ProblemsSection />
         <SolutionsSection />
+        <ServicesSection />
         <BenefitsSection />
         <WhyUsSection />
         <ResultsSection />
